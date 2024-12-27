@@ -1,0 +1,607 @@
+        /* CSS for button-85 */
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-85:before {
+            content: "";
+            background: linear-gradient(
+                45deg,
+                #ff0000,
+                #ff7300,
+                #fffb00,
+                #48ff00,
+                #00ffd5,
+                #002bff,
+                #7a00ff,
+                #ff00c8,
+                #ff0000
+            );
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #222;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-container {
+            position: relative;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            background: #FF9F75;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        .popup-container:before {
+            content: "";
+            background: linear-gradient(
+                45deg,
+                #ff0000,
+                #ff7300,
+                #fffb00,
+                #48ff00,
+                #00ffd5,
+                #002bff,
+                #7a00ff,
+                #ff00c8,
+                #ff0000
+            );
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        .popup-container:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #FF9F75;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        .disclaimer {
+            color: #000; /* Text color changed to black */
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .disclaimer h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #000; /* Heading color changed to black */
+        }
+
+        .disclaimer p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .disclaimer a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .disclaimer a:hover {
+            text-decoration: underline;
+        }
+
+/* From Uiverse.io by satyamchaudharydev */ 
+.card2 {
+  --primary: #00b9ae;
+  --text: #f9f9f9b2;
+  --secondary: #f9f9f933;
+  --radius: 20px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 90vw;
+  max-width: 600px;
+  height: auto;
+  background: linear-gradient(
+      180deg,
+      rgba(22, 24, 30, 0) 0%,
+      rgba(22, 24, 30, 0.7) 65.28%
+    ),
+    linear-gradient(0deg, rgba(0, 46, 38, 0.9), rgba(0, 76, 255, 0.7));
+  background-size: cover;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1em;
+  padding-top: 1.4em;
+  box-sizing: border-box;
+margin-bottom: 5px;
+}
+
+.card2 .card__title2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0.2rem;
+}
+
+.logo2 {
+  margin-top: 0.5em;
+  width: 85px;
+  height: 16px;
+}
+
+.logo__image2 {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+}
+
+.card2 .card__info2 {
+  display: flex;
+  margin-top: auto;
+  font-size: 0.8rem;
+  color: var(--text);
+  font-weight: 400;
+  justify-content: space-between;
+}
+
+.card2 .card__btns2 {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.card2 button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  background: var(--primary);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.card2 button:hover {
+  opacity: 0.8;
+  transform: scale(0.9);
+}
+
+.card2 .add-btn2 {
+  color: #fff;
+  padding: 0.5em 0.8em;
+  background: rgba(249, 249, 249, 0.2);
+  border-radius: 14px;
+}
+
+.card2 .watch-btn2 {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #7438ff;
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
+.card2 .watch-btn2:hover {
+  opacity: 0.8;
+  transform: scale(0.9);
+}
+
+
+/* From Uiverse.io by satyamchaudharydev */ 
+.card1 {
+  --primary: #00b9ae;
+  --text: #f9f9f9b2;
+  --secondary: #f9f9f933;
+  --radius: 20px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 90vw;
+  max-width: 600px;
+  height: auto;
+  background: linear-gradient(
+      180deg,
+      rgba(22, 24, 30, 0) 0%,
+      rgba(22, 24, 30, 0.7) 65.28%
+    ),
+    linear-gradient(0deg, rgba(0, 46, 38, 0.9), rgba(255, 0, 0, 0.6));
+  background-size: cover;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1em;
+  padding-top: 1.4em;
+  box-sizing: border-box;
+margin-bottom: 5px;
+}
+
+.card1 .card__title1 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0.2rem;
+}
+
+.logo1 {
+  margin-top: 0.5em;
+  width: 85px;
+  height: 16px;
+}
+
+.logo__image1 {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+}
+
+.card1 .card__info1 {
+  display: flex;
+  margin-top: auto;
+  font-size: 0.8rem;
+  color: var(--text);
+  font-weight: 400;
+  justify-content: space-between;
+}
+
+.card1 .card__btns1 {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.card1 button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  background: var(--primary);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.card1 button:hover {
+  opacity: 0.8;
+  transform: scale(0.9);
+}
+
+.card1 .add-btn1 {
+  color: #fff;
+  padding: 0.5em 0.8em;
+  background: rgba(249, 249, 249, 0.2);
+  border-radius: 14px;
+}
+
+.card1 .watch-btn1 {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #ff2929;
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
+.card1 .watch-btn1:hover {
+  opacity: 0.8;
+  transform: scale(0.9);
+}
+
+        @import url('https://fonts.cdnfonts.com/css/quantify?styles=30110');
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Quantify', Arial, sans-serif;
+            background-color: black;
+            color: #fff;
+            
+        }
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000; /* Solid black background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.header:after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Directly below the header */
+    left: 0;
+    width: 100%;
+    height: 5px; /* Thin line of color */
+    background: linear-gradient(
+        45deg,
+        #ff0000,
+        #ff7300,
+        #fffb00,
+        #48ff00,
+        #00ffd5,
+        #002bff,
+        #7a00ff,
+        #ff00c8,
+        #ff0000
+    );
+    background-size: 400%;
+    animation: flowing-line 20s linear infinite;
+    z-index: -1;
+    border-radius: 0; /* Prevents rounded edges */
+}
+ 
+@keyframes flowing-line {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+        .image_wrapper img {
+            height: 8vw;
+            max-height: 50px;
+        }
+
+        .profile_icon img {
+            height: 8vw;
+            max-height: 50px;
+            border-radius: 30%;
+            cursor: pointer;
+            position: relative;
+            top: 5px;
+        }
+
+        h2 {
+            font-size: 0.2rem;
+            margin-bottom: 20px;
+            font-family: 'Quantify', Arial, sans-serif;
+        }
+
+        .select_profile {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #8CFF00;
+        }
+
+        .content_wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 80px;
+        }
+
+        .profile_options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 20px;
+            row-gap: 20px;
+            width: 100%;
+        }
+
+        @media (min-width: 800px) {
+            .profile_options {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .profile_option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .profile_option:hover {
+            transform: scale(1.1);
+        }
+
+        .profile_option img {
+            width: 140px;
+            height: 140px;
+            border-radius: 25px;
+        }
+
+        .profile_option span {
+            margin-top: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .profile_option img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .profile_option img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .profile_option span {
+                font-size: 1rem;
+            }
+        }
+
+        /* Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            z-index: 200;
+        }
+
+        .popup img {
+            width: 100px;
+            height: 100px;
+            border-radius: 25%;
+        }
+
+        .popup .username {
+            color: black;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .popup .username input {
+            background-color: #222;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .popup .username img {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+        }
+
+        .popup button {
+            background-color: #f90;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            color: black;
+        }
+
+        .close-popup {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: black;
+        }
+
