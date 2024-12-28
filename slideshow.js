@@ -1,50 +1,50 @@
 
-        let slideIndex = 0;
-        const slides = document.getElementsByClassName("slides");
-        const dots = document.getElementsByClassName("dot");
-        const slideshowContainer = document.querySelector('.slideshow-container');
-        let slideInterval;
+        let carouselIndex = 0;
+        const carouselSlides = document.getElementsByClassName("carousel-slide");
+        const carouselDots = document.getElementsByClassName("carousel-dot");
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
+        let carouselInterval;
 
-        function showSlides() {
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active-slide", "previous-slide");
-                dots[i].classList.remove("active");
+        function showCarouselSlides() {
+            for (let i = 0; i < carouselSlides.length; i++) {
+                carouselSlides[i].classList.remove("current-slide", "prev-slide");
+                carouselDots[i].classList.remove("active-dot");
             }
 
-            slideIndex++;
-            if (slideIndex >= slides.length) {
-                slideIndex = 0;
+            carouselIndex++;
+            if (carouselIndex >= carouselSlides.length) {
+                carouselIndex = 0;
             }
 
-            if (slideIndex === 0) {
-                slides[slides.length - 1].classList.add("previous-slide");
+            if (carouselIndex === 0) {
+                carouselSlides[carouselSlides.length - 1].classList.add("prev-slide");
             } else {
-                slides[slideIndex - 1].classList.add("previous-slide");
+                carouselSlides[carouselIndex - 1].classList.add("prev-slide");
             }
 
-            slides[slideIndex].classList.add("active-slide");
-            dots[slideIndex].classList.add("active");
+            carouselSlides[carouselIndex].classList.add("current-slide");
+            carouselDots[carouselIndex].classList.add("active-dot");
 
-            adjustContainerHeight();
+            adjustCarouselHeight();
         }
 
-        function adjustContainerHeight() {
-            const activeSlideImage = slides[slideIndex].querySelector('img');
-            const slideHeight = activeSlideImage.clientHeight;
-            slideshowContainer.style.height = `${slideHeight}px`;
+        function adjustCarouselHeight() {
+            const activeCarouselImage = carouselSlides[carouselIndex].querySelector('img');
+            const slideHeight = activeCarouselImage.clientHeight;
+            carouselWrapper.style.height = `${slideHeight}px`;
         }
 
-        function startSlideshow() {
-            slideInterval = setInterval(showSlides, 5000);
+        function startCarousel() {
+            carouselInterval = setInterval(showCarouselSlides, 5000);
         }
 
-        function pauseSlides() {
-            clearInterval(slideInterval);
+        function pauseCarousel() {
+            clearInterval(carouselInterval);
         }
 
-        function resumeSlides() {
-            startSlideshow();
+        function resumeCarousel() {
+            startCarousel();
         }
 
-        startSlideshow();
-        adjustContainerHeight();
+        startCarousel();
+        adjustCarouselHeight();
