@@ -1,20 +1,17 @@
-       	.slider-container h2 {
-            font-size: 1.5rem;
-            margin: 0;
-            color: #FF2424;
-            font-family: 'Quantify', Arial, sans-serif;
-			margin-top: 5px;
+
+        body {
+            padding-top: 0;
         }
-        
-        .slideshow-container {
+
+        .carousel-wrapper {
             position: relative;
             width: 100%;
             overflow: hidden;
             transition: height 0.5s ease;
-			border-radius: 5%;
+            border-radius: 10px;
         }
 
-        .slides {
+        .carousel-slide {
             position: absolute;
             width: 100%;
             height: auto;
@@ -23,21 +20,21 @@
             transition: left 1s ease-in-out;
         }
 
-        .active-slide {
+        .current-slide {
             left: 0;
         }
 
-        .previous-slide {
+        .prev-slide {
             left: -100%;
         }
 
-        .slideshow-container img {
+        .carousel-wrapper img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        .dots {
+        .carousel-dots {
             text-align: center;
             position: absolute;
             bottom: 10px;
@@ -47,7 +44,7 @@
             gap: 8px;
         }
 
-        .dot {
+        .carousel-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
@@ -56,17 +53,29 @@
             transition: background-color 0.6s ease;
         }
 
-        .active {
+        .active-dot {
             background-color: #fff;
         }
 
         @media (max-width: 768px) {
-            .header h1 {
+            .header-title h1 {
                 font-size: 1.5rem;
             }
 
-            .dot {
+            .carousel-dot {
                 width: 6px;
                 height: 6px;
             }
         }
+
+        @media (max-width: 400px) {
+            .header-title h1 {
+                font-size: 1rem;
+            }
+
+            .carousel-dot {
+                width: 4px;
+                height: 4px;
+            }
+        }
+
