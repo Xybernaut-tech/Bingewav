@@ -1,4 +1,4 @@
-
+document.addEventListener('DOMContentLoaded', function() {
         let carouselIndex = 0;
         const carouselSlides = document.getElementsByClassName("carousel-slide");
         const carouselDots = document.getElementsByClassName("carousel-dot");
@@ -48,3 +48,4 @@
 
         startCarousel();
         adjustCarouselHeight();
+  });
