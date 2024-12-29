@@ -157,7 +157,7 @@
         .disclaimer a:hover {
             text-decoration: underline;
         }
-  /* General container for horizontal scrolling */
+ /* Container for horizontal scrolling */
   .card-container {
     display: flex;
     overflow-x: auto;
@@ -165,18 +165,18 @@
     gap: 5vw; /* Space between cards */
     padding: 10px;
     box-sizing: border-box;
-    width: 100%;
-    min-width: 100vw;
     scroll-padding-left: 10px;
+    width: calc(100vw - 10px); /* Prevent overflow */
   }
 
   .card-container::-webkit-scrollbar {
-    display: none; /* Hides the scrollbar for a cleaner look */
+    display: none; /* Hides scrollbar */
   }
 
+  /* Card Styles */
   .card1, .card2 {
-    flex: 0 0 calc(80vw - 10px); /* Adjust width to prevent overflow */
-    max-width: 600px;
+    flex: 0 0 70vw; /* Smaller width to avoid overflow */
+    max-width: 500px; /* Ensures cards are responsive */
     border-radius: 20px;
     overflow: hidden;
     background: linear-gradient(180deg, rgba(22, 24, 30, 0) 0%, rgba(22, 24, 30, 0.7) 65.28%), 
@@ -188,7 +188,7 @@
     gap: 0.7rem;
     padding: 1em;
     box-sizing: border-box;
-    scroll-snap-align: center; 
+    scroll-snap-align: start; /* Aligns properly on scroll */
   }
 
   .card1 .card__title1, .card2 .card__title2 {
@@ -277,8 +277,7 @@
   .card1 .add-btn1, .card2 .add-btn2 {
     background: #ffffff;
     opacity: 1;
-  }
-        body,
+  }        body,
         html {
             height: 100%;
             margin: 0;
