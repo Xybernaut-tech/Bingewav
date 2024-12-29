@@ -158,219 +158,126 @@
             text-decoration: underline;
         }
 
-/* From Uiverse.io by satyamchaudharydev */ 
-.card2 {
-  --primary: #00b9ae;
-  --text: #f9f9f9b2;
-  --secondary: #f9f9f933;
-  --radius: 20px;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 90vw;
-  max-width: 600px;
-  height: auto;
-  background: linear-gradient(
-      180deg,
-      rgba(22, 24, 30, 0) 0%,
-      rgba(22, 24, 30, 0.7) 65.28%
-    ),
-    linear-gradient(0deg, rgba(0, 46, 38, 0.9), rgba(0, 76, 255, 0.7));
-  background-size: cover;
-  border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  padding: 1em;
-  padding-top: 1.4em;
-  box-sizing: border-box;
-margin-bottom: 5px;
-}
+  /* General container for horizontal scrolling */
+  .card-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 5vw; /* Space between cards */
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%; /* Ensure the container doesn't exceed the screen width */
+  }
 
-.card2 .card__title2 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 0.2rem;
-}
+  .card-container::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar for a cleaner look */
+  }
 
-.logo2 {
-  margin-top: 0.5em;
-  width: 85px;
-  height: 16px;
-}
+  .card1, .card2 {
+    flex: 0 0 80vw; /* Each card takes up 80% of the viewport width */
+    max-width: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(22, 24, 30, 0) 0%, rgba(22, 24, 30, 0.7) 65.28%), 
+                linear-gradient(0deg, rgba(0, 46, 38, 0.9), rgba(0, 76, 255, 0.7)); /* Or different gradient for the second card */
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1em;
+    box-sizing: border-box;
+    scroll-snap-align: center; 
+  }
 
-.logo__image2 {
-  width: 70%;
-  height: auto;
-  object-fit: contain;
-}
+  .card1 .card__title1, .card2 .card__title2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 0.2rem;
+  }
 
-.card2 .card__info2 {
-  display: flex;
-  margin-top: auto;
-  font-size: 0.8rem;
-  color: var(--text);
-  font-weight: 400;
-  justify-content: space-between;
-}
+  .card1 .card__logo1, .card2 .card__logo2 {
+    display: flex;
+    justify-content: flex-start; /* Align the logo to the left */
+    margin-top: 0.5rem;
+  }
 
-.card2 .card__btns2 {
-  display: flex;
-  gap: 0.6rem;
-}
+  .card1 .card__info1, .card2 .card__info2 {
+    display: flex;
+    margin-top: auto;
+    font-size: 0.8rem;
+    color: #f9f9f9b2;
+    font-weight: 400;
+    justify-content: space-between;
+  }
 
-.card2 button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  background: var(--primary);
-  color: #fff;
-  border-radius: var(--radius);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: 0.2s;
-}
+  .card1 .card__btns1, .card2 .card__btns2 {
+    display: flex;
+    gap: 0.6rem;
+  }
 
-.card2 button:hover {
-  opacity: 0.8;
-  transform: scale(0.9);
-}
+  .card1 button, .card2 button {
+    border: none;
+    background: #00b9ae;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.2s;
+  }
 
-.card2 .add-btn2 {
-  color: #fff;
-  padding: 0.5em 0.8em;
-  background: rgba(249, 249, 249, 0.2);
-  border-radius: 14px;
-}
+  .card1 button:hover, .card2 button:hover {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+  
+    .card2 .watch-btn2 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: #ff2929;; /* For the first card */
+    color: #fff;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+  }
 
-.card2 .watch-btn2 {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background: #7438ff;
-  color: #fff;
-  border-radius: var(--radius);
-  font-size: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-}
+  .card1 .watch-btn1 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: #7438ff; /* For the first card */
+    color: #fff;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+  }
 
-.card2 .watch-btn2:hover {
-  opacity: 0.8;
-  transform: scale(0.9);
-}
+  .card1 .watch-btn1:hover, .card2 .watch-btn2:hover {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
 
-
-/* From Uiverse.io by satyamchaudharydev */ 
-.card1 {
-  --primary: #00b9ae;
-  --text: #f9f9f9b2;
-  --secondary: #f9f9f933;
-  --radius: 20px;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 90vw;
-  max-width: 600px;
-  height: auto;
-  background: linear-gradient(
-      180deg,
-      rgba(22, 24, 30, 0) 0%,
-      rgba(22, 24, 30, 0.7) 65.28%
-    ),
-    linear-gradient(0deg, rgba(0, 46, 38, 0.9), rgba(255, 0, 0, 0.6));
-  background-size: cover;
-  border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  padding: 1em;
-  padding-top: 1.4em;
-  box-sizing: border-box;
-margin-bottom: 5px;
-}
-
-.card1 .card__title1 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 0.2rem;
-}
-
-.logo1 {
-  margin-top: 0.5em;
-  width: 85px;
-  height: 16px;
-}
-
-.logo__image1 {
-  width: 70%;
-  height: auto;
-  object-fit: contain;
-}
-
-.card1 .card__info1 {
-  display: flex;
-  margin-top: auto;
-  font-size: 0.8rem;
-  color: var(--text);
-  font-weight: 400;
-  justify-content: space-between;
-}
-
-.card1 .card__btns1 {
-  display: flex;
-  gap: 0.6rem;
-}
-
-.card1 button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  background: var(--primary);
-  color: #fff;
-  border-radius: var(--radius);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.card1 button:hover {
-  opacity: 0.8;
-  transform: scale(0.9);
-}
-
-.card1 .add-btn1 {
-  color: #fff;
-  padding: 0.5em 0.8em;
-  background: rgba(249, 249, 249, 0.2);
-  border-radius: 14px;
-}
-
-.card1 .watch-btn1 {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background: #ff2929;
-  color: #fff;
-  border-radius: var(--radius);
-  font-size: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-}
-
-.card1 .watch-btn1:hover {
-  opacity: 0.8;
-  transform: scale(0.9);
-}
-
+  /* Specific styles for the second card (different gradient for example) */
+  .card2 {
+    background: linear-gradient(180deg, rgba(22, 24, 30, 0) 0%, rgba(22, 24, 30, 0.7) 65.28%), 
+                linear-gradient(0deg, rgba(0, 46, 38, 0.9), rgba(255, 0, 0, 0.6));
+  }
+  
+  .card1 .add-btn1, .card2 .add-btn2 {
+    background: #ffffff;
+    opacity: 1;
+  }
         @import url('https://fonts.cdnfonts.com/css/quantify?styles=30110');
 
         * {
