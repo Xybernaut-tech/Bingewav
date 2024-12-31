@@ -340,6 +340,7 @@
         .image_wrapper img {
             height: 8vw;
             max-height: 50px;
+            border-radius: 50%;
         }
 
         .profile_icon img {
@@ -457,7 +458,7 @@
         .popup img {
             width: 100px;
             height: 100px;
-            border-radius: 25%;
+            border-radius: 50%;
         }
 
         .popup .username {
