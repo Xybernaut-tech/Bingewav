@@ -502,3 +502,119 @@
             font-size: 1.5rem;
             color: black;
         }
+
+
+
+
+    .footer-nav {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-5px); /* Slight uplift for 3D effect */
+      background: #1f1f1f; /* Fully opaque */
+      border-radius: 15px;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Subtle 3D effect */
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 90%;
+      max-width: 400px;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    .footer-nav a {
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-nav a:hover {
+      color: #ff4747;
+    }
+
+    .footer-nav a.active {
+      color: #ff4747;
+    }
+
+    .footer-nav a svg {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+      color: #fff;
+      vertical-align: middle;
+    }
+
+    .footer-nav a.active svg {
+      color: #ff4747;
+    }
+
+    .footer-nav a:hover svg {
+      color: #ff4747;
+    }
+
+    .footer-nav a span {
+      font-size: 12px;
+    }
+
+    /* Full-screen overlay with scrollable list */
+    .fullscreen-list {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8); /* Fully opaque background */
+      z-index: 999;
+      color: #fff;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding: 0 20px;
+      animation: popOut 0.5s ease-out;
+      overflow-y: auto;
+      max-height: calc(100vh - 70px); /* Make it take full height minus navbar height */
+      padding-top: 70px; /* Ensure the list starts below the navbar */
+    }
+
+    .fullscreen-list ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .fullscreen-list li {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .fullscreen-list li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .fullscreen-list li a:hover {
+      color: #ff4747;
+    }
+
+    /* Animation for the pop-out effect */
+    @keyframes popOut {
+      0% {
+        transform: scale(0) translateY(-50%);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
