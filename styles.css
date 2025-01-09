@@ -561,14 +561,14 @@
       font-size: 12px;
     }
 
-    /* Full-screen overlay with scrollable list */
-    .fullscreen-list {
+    /* Full-screen popup style */
+    .fullscreen-popup {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: calc(100vh - 70px); /* Full screen minus navbar height */
       background: rgba(0, 0, 0, 0.8); /* Fully opaque background */
       z-index: 999;
       color: #fff;
@@ -577,11 +577,10 @@
       padding: 0 20px;
       animation: popOut 0.5s ease-out;
       overflow-y: auto;
-      max-height: calc(100vh - 70px); /* Make it take full height minus navbar height */
-      padding-top: 70px; /* Ensure the list starts below the navbar */
+      padding-top: 70px; /* Start list below navbar */
     }
 
-    .fullscreen-list ul {
+    .fullscreen-popup ul {
       list-style-type: none;
       padding: 0;
       margin: 0;
@@ -591,22 +590,22 @@
       width: 100%;
     }
 
-    .fullscreen-list li {
+    .fullscreen-popup li {
       margin: 10px 0;
       font-size: 18px;
     }
 
-    .fullscreen-list li a {
+    .fullscreen-popup li a {
       color: #fff;
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .fullscreen-list li a:hover {
+    .fullscreen-popup li a:hover {
       color: #ff4747;
     }
 
-    /* Animation for the pop-out effect */
+    /* Animation for the popup effect */
     @keyframes popOut {
       0% {
         transform: scale(0) translateY(-50%);
@@ -617,4 +616,3 @@
         opacity: 1;
       }
     }
-
