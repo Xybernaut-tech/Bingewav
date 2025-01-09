@@ -506,6 +506,11 @@
 
 
 
+
+
+
+
+
     .footer-nav {
       position: fixed;
       bottom: 10px;
@@ -559,60 +564,4 @@
 
     .footer-nav a span {
       font-size: 12px;
-    }
-
-    /* Full-screen popup style */
-    .fullscreen-popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: calc(100vh - 70px); /* Full screen minus navbar height */
-      background: rgba(0, 0, 0, 0.8); /* Fully opaque background */
-      z-index: 999;
-      color: #fff;
-      justify-content: flex-start;
-      flex-direction: column;
-      padding: 0 20px;
-      animation: popOut 0.5s ease-out;
-      overflow-y: auto;
-      padding-top: 70px; /* Start list below navbar */
-    }
-
-    .fullscreen-popup ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-
-    .fullscreen-popup li {
-      margin: 10px 0;
-      font-size: 18px;
-    }
-
-    .fullscreen-popup li a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .fullscreen-popup li a:hover {
-      color: #ff4747;
-    }
-
-    /* Animation for the popup effect */
-    @keyframes popOut {
-      0% {
-        transform: scale(0) translateY(-50%);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-      }
     }
