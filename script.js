@@ -67,3 +67,28 @@ document.addEventListener('selectstart', function (e) {
 
 
 
+   const tvBtn = document.getElementById('tv-btn');
+    const tvList = document.getElementById('tv-list');
+    const homeBtn = document.getElementById('home-btn');
+    const navLinks = document.querySelectorAll('.footer-nav a');
+
+    // Open TV list and make TV button active
+    tvBtn.addEventListener('click', function() {
+      tvList.style.display = 'flex';  // Show the TV list
+      tvBtn.classList.add('active');  // Make the TV button active
+
+      // Remove active class from all other links except TV
+      navLinks.forEach(link => {
+        if (link.id !== 'tv-btn') {
+          link.classList.remove('active');
+        }
+      });
+    });
+
+    // Close TV list and make Home active when Home button is clicked
+    homeBtn.addEventListener('click', function() {
+      tvList.style.display = 'none';  // Hide the TV list
+      homeBtn.classList.add('active');  // Make Home button active
+      tvBtn.classList.remove('active');  // Make TV button inactive
+    });
+ 
