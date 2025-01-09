@@ -67,28 +67,23 @@ document.addEventListener('selectstart', function (e) {
 
 
 
-   const tvBtn = document.getElementById('tv-btn');
-    const tvList = document.getElementById('tv-list');
+ 
+
+    const tvBtn = document.getElementById('tv-btn');
+    const tvPopup = document.getElementById('tv-popup');
     const homeBtn = document.getElementById('home-btn');
     const navLinks = document.querySelectorAll('.footer-nav a');
 
-    // Open TV list and make TV button active
+    // Open the popup when TV button is clicked
     tvBtn.addEventListener('click', function() {
-      tvList.style.display = 'flex';  // Show the TV list
-      tvBtn.classList.add('active');  // Make the TV button active
-
-      // Remove active class from all other links except TV
-      navLinks.forEach(link => {
-        if (link.id !== 'tv-btn') {
-          link.classList.remove('active');
-        }
-      });
+      tvPopup.style.display = 'flex'; // Show the popup
+      navLinks.forEach(link => link.classList.remove('active')); // Remove active class from other links
+      tvBtn.classList.add('active'); // Add active class to the TV button
     });
 
-    // Close TV list and make Home active when Home button is clicked
+    // Close the popup when Home button is clicked
     homeBtn.addEventListener('click', function() {
-      tvList.style.display = 'none';  // Hide the TV list
-      homeBtn.classList.add('active');  // Make Home button active
-      tvBtn.classList.remove('active');  // Make TV button inactive
+      tvPopup.style.display = 'none'; // Hide the popup
+      tvBtn.classList.remove('active'); // Remove active class from TV button
+      homeBtn.classList.add('active'); // Add active class to Home button
     });
- 
