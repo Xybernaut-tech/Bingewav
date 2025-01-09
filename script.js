@@ -69,21 +69,12 @@ document.addEventListener('selectstart', function (e) {
 
  
 
-    const tvBtn = document.getElementById('tv-btn');
-    const tvPopup = document.getElementById('tv-popup');
-    const homeBtn = document.getElementById('home-btn');
     const navLinks = document.querySelectorAll('.footer-nav a');
 
-    // Open the popup when TV button is clicked
-    tvBtn.addEventListener('click', function() {
-      tvPopup.style.display = 'flex'; // Show the popup
-      navLinks.forEach(link => link.classList.remove('active')); // Remove active class from other links
-      tvBtn.classList.add('active'); // Add active class to the TV button
-    });
-
-    // Close the popup when Home button is clicked
-    homeBtn.addEventListener('click', function() {
-      tvPopup.style.display = 'none'; // Hide the popup
-      tvBtn.classList.remove('active'); // Remove active class from TV button
-      homeBtn.classList.add('active'); // Add active class to Home button
+    // Manage active link state
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(item => item.classList.remove('active')); // Remove active from all
+        link.classList.add('active'); // Add active to clicked item
+      });
     });
