@@ -78,26 +78,3 @@ document.addEventListener('selectstart', function (e) {
         link.classList.add('active'); // Add active to clicked item
       });
     });
-
-
-
-
-
-
-
-
-
-
-
-
-        // Create an audio element
-        const audio = new Audio('https://raw.githubusercontent.com/odfinity/bingewav-resources/main/Happy_republic_Day_to_all_my_family_music.mp3');
-
-        // Set it to autoplay and loop
-        audio.autoplay = true;
-        audio.loop = true;
-
-        // Start playing when the page loads
-        window.addEventListener('load', () => {
-            audio.play().catch(error => console.error('Audio play failed:', error));
-        });
