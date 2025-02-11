@@ -284,7 +284,8 @@
             font-family: 'Quantify', Arial, sans-serif;
             background-color: black;
             color: #fff;
-            
+            background: url('https://i.ibb.co/gBBXgfH/dark-hearts-valentine-2.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
 .header {
