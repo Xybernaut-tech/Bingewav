@@ -271,7 +271,7 @@
 
   .card2 {
     background: linear-gradient(180deg, rgba(22, 24, 30, 0) 0%, rgba(22, 24, 30, 0.7) 65.28%), 
-                linear-gradient(0deg, rgba(0, 46, 38, 0.9), rgba(255, 199, 199, 0.6));
+                linear-gradient(0deg, rgba(0, 46, 38, 0.9), rgba(255, 61, 145, 0.6));
   }
   
   .card1 .add-btn1, .card2 .add-btn2 {
