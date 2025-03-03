@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingewave Updates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #logo {
+            width: 20%;
+            max-width: 200px;
+            min-width: 100px;
+            margin-bottom: 20px;
+        }
+        #updates {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+        }
+        .update-container {
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .update-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9vw;
+            font-weight: bold;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: #bbb;
+        }
+        .update-title {
+            font-size: 1.5vw;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #00ff62;
+        }
+        .update-image {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .update-body {
+            font-size: 1vw;
+            text-align: left;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+            line-height: 2;
+        }
+        .update-body b {
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .update-body center {
+            display: block;
+            text-align: center;
+            font-weight: bold;
+        }
+        .update-button {
+            display: block;
+            width: 50%;
+            min-width: 100px;
+            margin: 10px auto 0;
+            padding: 10px;
+            background-color: #ff0000;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1vw;
+            font-weight: bold;
+        }
+        @media (max-width: 1500px) {
+            .update-title {
+                font-size: 16px;
+            }
+            .update-body {
+                font-size: 14px;
+            }
+            .update-button {
+                font-size: 14px;
+            }
+            .update-header {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img id="logo" src="https://i.ibb.co/5ggFrCdq/update.png" alt="Bingewave Updates Logo">
+    <div id="updates"></div>
+    <script>
+        function getISTTime() {
+            let now = new Date();
+            let utcOffset = now.getTimezoneOffset() * 60000;
+            let istOffset = 5.5 * 60 * 60 * 1000;
+            return new Date(now.getTime() + istOffset - utcOffset);
+        }
+
+        function parseDateTime(update) {
+            const [day, month, year] = update.date.split('/').map(Number);
+            const [hours, minutes] = update.time.split(':').map(Number);
+            return new Date(year, month - 1, day, hours, minutes);
+        }
+
+        function formatTime12Hour(time24) {
+            let [hours, minutes] = time24.split(':').map(Number);
+            let period = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;
+            return `${hours}:${minutes.toString().padStart(2, '0')} ${period}`;
+        }
+
+        function loadUpdates() {
+            let istNow = getISTTime();
+
+            fetch("https://app-bingewave.vercel.app/updates/data.json")
+                .then(response => response.json())
+                .then(data => {
+                    const updatesContainer = document.getElementById("updates");
+                    let validUpdates = data.updates.filter(update => parseDateTime(update) <= istNow);
+                    validUpdates.sort((a, b) => parseDateTime(b) - parseDateTime(a));
+
+                    validUpdates.forEach(update => {
+                        const updateDiv = document.createElement("div");
+                        updateDiv.classList.add("update-container");
+                        
+                        let content = `<div class="update-header">
+                            <span>${formatTime12Hour(update.time)}</span>
+                            <span>${update.date}</span>
+                        </div>`;
+                        
+                        content += `<h2 class="update-title">${update.title}</h2>`;
+                        
+                        if (update.poster) {
+                            content += `<img src="${update.poster}" alt="${update.title}" class="update-image">`;
+                        }
+                        
+                        content += `<p class="update-body">${update.body.replace(/\*(.*?)\*/g, "<b>$1</b>").replace(/~~(.*?)~~/g, "<center>$1</center>").replace(/<br>/g, "<br>")}</p>`;
+                        
+                        if (update.btn_text) {
+                            content += `<a href="${update.btn_url}" class="update-button" target="_blank">${update.btn_text}</a>`;
+                        }
+                        
+                        updateDiv.innerHTML = content;
+                        updatesContainer.appendChild(updateDiv);
+                    });
+                })
+                .catch(error => console.error("Error fetching updates:", error));
+        }
+
+        loadUpdates();
+    </script>
+</body>
+</html>
