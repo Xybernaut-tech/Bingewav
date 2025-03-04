@@ -577,6 +577,7 @@
         transform: translateX(-50%);
         width: 90%;
         max-width: 400px;
+        color: black;
         background-color: #fff;
         border: 1px solid #ccc;
         box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); /* Red shadow */
