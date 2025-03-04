@@ -82,6 +82,7 @@ document.addEventListener('selectstart', function (e) {
 
 
 
+    document.addEventListener("DOMContentLoaded", async function () {
         async function getISTTime() {
             try {
                 const response = await fetch('https://worldtimeapi.org/api/timezone/Asia/Kolkata');
@@ -95,10 +96,13 @@ document.addEventListener('selectstart', function (e) {
 
         async function fetchUpdates() {
             try {
-                const response = await fetch('https://app-bingewave.vercel.app/updates/data.json');
+                // Fetch both IST time and JSON in parallel to reduce delay
+                const [currentTime, response] = await Promise.all([
+                    getISTTime(),
+                    fetch('https://app-bingewave.vercel.app/updates/data.json')
+                ]);
                 const data = await response.json();
                 const updates = data.updates;
-                const currentTime = await getISTTime();
 
                 let latestUpdate = null;
                 let latestTimeDiff = -Infinity;
@@ -111,7 +115,6 @@ document.addEventListener('selectstart', function (e) {
 
                     // Check if the update is within the 3-hour window
                     if (timeDifference >= 0 && timeDifference <= 3) {
-                        // Find the latest update by comparing the time difference
                         if (timeDifference > latestTimeDiff) {
                             latestTimeDiff = timeDifference;
                             latestUpdate = update;
@@ -147,5 +150,5 @@ document.addEventListener('selectstart', function (e) {
             }, 3000);
         }
 
-        // Run function after everything loads
-        window.onload = fetchUpdates;
+        fetchUpdates(); // Execute immediately on page load
+    });
