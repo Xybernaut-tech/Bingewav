@@ -111,66 +111,102 @@
 <body>
     <img id="logo" src="https://i.ibb.co/5ggFrCdq/update.png" alt="Bingewave Updates Logo">
     <div id="updates"></div>
-    <script>
-        function getISTTime() {
-            let now = new Date();
-            let utcOffset = now.getTimezoneOffset() * 60000;
-            let istOffset = 5.5 * 60 * 60 * 1000;
-            return new Date(now.getTime() + istOffset - utcOffset);
+<script>
+    // Function to fetch current IST time from WorldTimeAPI
+    async function getISTTime() {
+        try {
+            const response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Kolkata");
+            const data = await response.json();
+            const istDateTime = new Date(data.datetime);
+            return istDateTime;
+        } catch (error) {
+            console.error("Error fetching IST time:", error);
+            // Fallback to system time if API fails
+            return new Date();
+        }
+    }
+
+    // Function to parse update date and time
+    function parseDateTime(update) {
+        const [day, month, year] = update.date.split('/').map(Number);
+        const [hours, minutes] = update.time.split(':').map(Number);
+        return new Date(year, month - 1, day, hours, minutes);
+    }
+
+    // Function to check if an update is valid
+    function isUpdateValid(update, istNow) {
+        const updateDateTime = parseDateTime(update);
+
+        // Get today's date at midnight (start of the day)
+        const todayStart = new Date(istNow.getFullYear(), istNow.getMonth(), istNow.getDate());
+
+        // If the update date is before today, show it
+        if (updateDateTime < todayStart) {
+            return true;
         }
 
-        function parseDateTime(update) {
-            const [day, month, year] = update.date.split('/').map(Number);
-            const [hours, minutes] = update.time.split(':').map(Number);
-            return new Date(year, month - 1, day, hours, minutes);
+        // If the update date is today, check the time
+        if (updateDateTime.getFullYear() === istNow.getFullYear() &&
+            updateDateTime.getMonth() === istNow.getMonth() &&
+            updateDateTime.getDate() === istNow.getDate()) {
+            // Compare hours and minutes
+            if (updateDateTime.getHours() < istNow.getHours() ||
+                (updateDateTime.getHours() === istNow.getHours() && updateDateTime.getMinutes() <= istNow.getMinutes())) {
+                return true;
+            }
         }
 
-        function formatTime12Hour(time24) {
-            let [hours, minutes] = time24.split(':').map(Number);
-            let period = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12 || 12;
-            return `${hours}:${minutes.toString().padStart(2, '0')} ${period}`;
-        }
+        // Otherwise, don't show the update
+        return false;
+    }
 
-        function loadUpdates() {
-            let istNow = getISTTime();
+    // Function to load updates
+    async function loadUpdates() {
+        const istNow = await getISTTime(); // Fetch current IST time
+        console.log("Current IST Time:", istNow);
 
-            fetch("https://app-bingewave.vercel.app/updates/data.json")
-                .then(response => response.json())
-                .then(data => {
-                    const updatesContainer = document.getElementById("updates");
-                    let validUpdates = data.updates.filter(update => parseDateTime(update) <= istNow);
-                    validUpdates.sort((a, b) => parseDateTime(b) - parseDateTime(a));
+        fetch("https://app-bingewave.vercel.app/updates/data.json")
+            .then(response => response.json())
+            .then(data => {
+                const updatesContainer = document.getElementById("updates");
 
-                    validUpdates.forEach(update => {
-                        const updateDiv = document.createElement("div");
-                        updateDiv.classList.add("update-container");
-                        
-                        let content = `<div class="update-header">
-                            <span>${formatTime12Hour(update.time)}</span>
-                            <span>${update.date}</span>
-                        </div>`;
-                        
-                        content += `<h2 class="update-title">${update.title}</h2>`;
-                        
-                        if (update.poster) {
-                            content += `<img src="${update.poster}" alt="${update.title}" class="update-image">`;
-                        }
-                        
-                        content += `<p class="update-body">${update.body.replace(/\*(.*?)\*/g, "<b>$1</b>").replace(/~~(.*?)~~/g, "<center>$1</center>").replace(/<br>/g, "<br>")}</p>`;
-                        
-                        if (update.btn_text) {
-                            content += `<a href="${update.btn_url}" class="update-button" target="_blank">${update.btn_text}</a>`;
-                        }
-                        
-                        updateDiv.innerHTML = content;
-                        updatesContainer.appendChild(updateDiv);
-                    });
-                })
-                .catch(error => console.error("Error fetching updates:", error));
-        }
+                // Filter updates correctly
+                const validUpdates = data.updates.filter(update => isUpdateValid(update, istNow));
 
-        loadUpdates();
-    </script>
+                // Sort updates so that newest ones appear first
+                validUpdates.sort((a, b) => parseDateTime(b) - parseDateTime(a));
+
+                // Display updates
+                validUpdates.forEach(update => {
+                    const updateDiv = document.createElement("div");
+                    updateDiv.classList.add("update-container");
+
+                    let content = `<div class="update-header">
+                        <span>${update.time}</span>
+                        <span>${update.date}</span>
+                    </div>`;
+
+                    content += `<h2 class="update-title">${update.title}</h2>`;
+
+                    if (update.poster) {
+                        content += `<img src="${update.poster}" alt="${update.title}" class="update-image">`;
+                    }
+
+                    content += `<p class="update-body">${update.body.replace(/\*(.*?)\*/g, "<b>$1</b>").replace(/~(.*?)~/g, "<center>$1</center>").replace(/<br>/g, "<br>")}</p>`;
+
+                    if (update.btn_text) {
+                        content += `<a href="${update.btn_url}" class="update-button">${update.btn_text}</a>`;
+                    }
+
+                    updateDiv.innerHTML = content;
+                    updatesContainer.appendChild(updateDiv);
+                });
+            })
+            .catch(error => console.error("Error fetching updates:", error));
+    }
+
+    loadUpdates();
+</script>
+
 </body>
 </html>
