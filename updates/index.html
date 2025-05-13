@@ -165,7 +165,7 @@
         const istNow = await getISTTime(); // Fetch current IST time
         console.log("Current IST Time:", istNow);
 
-        fetch("https://app-bingewave.vercel.app/updates/data.json")
+        fetch("https://app-bingewave.pages.dev/updates/data.json")
             .then(response => response.json())
             .then(data => {
                 const updatesContainer = document.getElementById("updates");
