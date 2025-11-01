@@ -133,7 +133,7 @@ document.addEventListener('selectstart', function (e) {
         function showNotification(update) {
             const popup = document.createElement('div');
             popup.className = 'notification-popup';
-            popup.onclick = () => window.location.href = 'https://app-bingewave.vercel.app/updates';
+            popup.onclick = () => window.location.href = 'https://app-bingewave.pages.dev/updates';
 
             popup.innerHTML = `
                 <img src="${update.poster}" alt="Update Image">
