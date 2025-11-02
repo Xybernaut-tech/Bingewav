@@ -114,7 +114,7 @@ document.addEventListener('selectstart', function (e) {
                     const timeDifference = (currentTime - updateTime) / (1000 * 60 * 60); // Convert to hours
 
                     // Check if the update is within the 3-hour window
-                    if (timeDifference >= 0 && timeDifference <= 3) {
+                    if (timeDifference >= 0 && timeDifference <= 12) {
                         if (timeDifference > latestTimeDiff) {
                             latestTimeDiff = timeDifference;
                             latestUpdate = update;
