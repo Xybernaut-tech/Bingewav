@@ -99,7 +99,7 @@ document.addEventListener('selectstart', function (e) {
                 // Fetch both IST time and JSON in parallel to reduce delay
                 const [currentTime, response] = await Promise.all([
                     getISTTime(),
-                    fetch('https://app-bingewave.vercel.app/updates/data.json')
+                    fetch('https://app-bingewave.pages.dev/updates/data.json')
                 ]);
                 const data = await response.json();
                 const updates = data.updates;
