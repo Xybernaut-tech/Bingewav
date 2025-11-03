@@ -113,8 +113,8 @@ document.addEventListener('selectstart', function (e) {
                     const updateTime = new Date(year, month - 1, day, hours, minutes);
                     const timeDifference = (currentTime - updateTime) / (1000 * 60 * 60); // Convert to hours
 
-                    // Check if the update is within the 3-hour window
-                    if (timeDifference >= 0 && timeDifference <= 12) {
+                    // Check if the update is within the 1 day (24 hour) window
+                    if (timeDifference >= 0 && timeDifference <= 24) {
                         if (timeDifference > latestTimeDiff) {
                             latestTimeDiff = timeDifference;
                             latestUpdate = update;
